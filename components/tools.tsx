@@ -1,4 +1,5 @@
 import React, { PropsWithChildren, ReactNode } from "react";
+import { View } from "react-native";
 
 export type FCChildrenOf<P> = React.FunctionComponent<PropsWithChildren<P>>
 export type StrictChildren<P extends ReactNode> = Exclude<P, string|number|boolean|null>

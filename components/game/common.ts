@@ -1,3 +1,5 @@
+import { MutableRefObject, ReactElement } from "react";
+
 export type IndexRowWithSpace = "A"|"B"|"C"|"G"|"H"|"I";
 export const IndexRowWithSpace = ["A", "B", "C", "G", "H", "I"]
 export type IndexRowNoSpace = "D"|"E"|"F";
@@ -37,6 +39,20 @@ export type Team = "black"|"white"
 
 export class DuckncupErr extends Error {}
 export interface Prop<Init extends (...args:any)=>void> {
-    onMounted:Init,
-    onDismounted:Init
+    onMounted?:Init,
+    onDismounted?:Init
+}
+export interface PropWithParent<Init extends (...args:any)=>void, Parent> {
+    onMounted?:Init,
+    onDismounted?:Init,
+    INTERNAL_PARENT:MutableRefObject<Parent>
+}
+export interface Action<T> {
+    mounted:boolean;
+    element:ReactElement<T>;
+}
+export interface ActionWithParent<T, T2> {
+    mounted:boolean;
+    element:ReactElement<T>;
+    parent:ReactElement<T2>;
 }
